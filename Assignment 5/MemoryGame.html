@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.tile{
+
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+    padding: 4px;
+    font-size: 80px;
+    color: transparent;
+    cursor: pointer;
+
+}
+</style>
+
+<body>
+
+    <div class="tile" onclick="gameStart(this)">W</div>
+    <div class="tile" onclick="gameStart(this)">A</div>
+    <div class="tile" onclick="gameStart(this)" >F</div>
+    <div  class="tile" onclick="gameStart(this)">M</div>
+    <br>
+    <br>
+    <div class="tile" onclick="gameStart(this)" >C</div>
+    <div class="tile" onclick="gameStart(this)" >F</div>
+    <div class="tile" onclick="gameStart(this)" >X</div>
+    <div class="tile" onclick="gameStart(this)">W</div>
+    
+    <br>
+    <br>
+    <div class="tile" onclick="gameStart(this)" >Z</div>
+    <div  class="tile" onclick="gameStart(this)">G</div>
+    <div class="tile" onclick="gameStart(this)" >C</div>
+    <div class="tile" onclick="gameStart(this)" >X</div>
+    
+    
+    <br>
+    <br>
+    <div class="tile" onclick="gameStart(this)">A</div>
+    <div  class="tile" onclick="gameStart(this)">G</div>
+    <div  class="tile" onclick="gameStart(this)">M</div>
+    <div class="tile" onclick="gameStart(this)" >Z</div>
+
+
+
+
+<script>
+
+let openedCard = [];
+
+
+function gameStart(obj)
+{
+
+    obj.style.color = "red";
+    let text = obj.innerHTML;
+    openedCard.push(obj);
+    var len = openedCard.length;
+
+     if(len === 2){
+        if(openedCard[0].innerHTML === openedCard[1].innerHTML){
+            let card = document.getElementsByClassName("tile");
+            
+            console.log("Matched");
+        
+            openedCard[0].style.color = "white";
+            openedCard[1].style.color = "white";
+            openedCard = [];
+        }
+        else{
+            
+            setTimeout(notMatched,1000);
+          
+        }
+     }
+
+     function notMatched(){
+    let card = document.getElementsByClassName("tile");
+            openedCard[0].style.color = "black";
+            obj.style.color = "black";
+            
+            openedCard = [];
+            console.log(openedCard);
+            console.log("Not Matched");
+}
+}
+
+
+</script>
+
+    
+</body>
+</html>

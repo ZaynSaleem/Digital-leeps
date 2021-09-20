@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let team1 = "Pakistan";
+      let team2 = "India";
+      let toss_win;
+      let total_score = 0;
+      let wicket = 0;
+      let total_wickets = 10;
+      let target;
+
+      let sec_in_score = 0;
+      let sec_in_wicket = 0;
+
+
+      console.log("The Match is Between " + team1 + " & " + team2);
+
+      // console.log( Math.floor(Math.random()*2)+1);
+      sleepFor(2000);
+      toss();
+      sleepFor(1000);
+      first_inning();
+
+
+      sleepFor(2000);
+      second_inning();
+
+      function toss() {
+        let toss = ["Head", "Tail"];
+        let random = Math.floor(Math.random() * toss.length);
+        console.log("It's " + toss[random]);
+        if (toss[random] == "Head") {
+          sleepFor(1000);
+          toss_win = team1;
+          console.log(team1 + " Won the Toss ! & decided to bat first");
+        } else {
+          sleepFor(1000);
+          toss_win = team2;
+          console.log(team2 + " Won the Toss ! & decided to bat first");
+        }
+      }
+
+
+
+
+
+      function match() {
+        for (let i = 1; i <= 5; i++) {
+          console.log(
+            " ====================== " +
+              i +
+              " Over Started ======================="
+          );
+
+          for (let j = 0; j <= 5; j++) {
+            sleepFor(1000);
+            let over_score = Math.floor(Math.random() * 7);
+            if (over_score === 0) {
+              wicket++;
+              sleepFor(1000)
+              console.log(over_score + " Out ");
+            } else {
+              total_score += over_score;
+              console.log(over_score);
+            }
+            if (wicket === total_wickets) {
+              console.log(toss_win + " is all out on" + total_score);
+            }
+          }
+          console.log("Total score is " + total_score + " / " + wicket);
+          console.log(
+            " ====================== " + i + " Over End ================="
+          );
+          console.log("\n");
+        }
+      }
+
+      function first_inning() {
+        console.log("5 Over Match started " + toss_win + " is to bat.");
+        match();
+        target = (total_score+1)
+        sleepFor(2000);
+        console.log("Target is " + target);
+        console.log("\n");
+      }
+
+
+
+      function second_inning() {
+        if (toss_win != team1) {
+            sleepFor(1000);
+          console.log("Team " + team1 + " is batting now");
+          for (let i = 1; i <=5; i++) {
+
+            console.log("************************* " + i +" Over Started *************************")
+
+            for (let j = 0; j <6; j++) {
+                sleepFor(1000);
+                let over_score = Math.floor(Math.random()*7);
+
+                if(over_score === 0){
+                sleepFor(1000);
+                    sec_in_wicket++;
+                    console.log(over_score + " Out");
+                }
+                else{
+                    sec_in_score += over_score;
+                    console.log(over_score);
+                }
+                if(sec_in_score == target ){
+                sleepFor(2000);
+                    console.log(team1 + " Has won the Match");
+                    break;
+                }
+                // else{
+                //     console.log(toss_win + " Has Won The Match");
+                //     break;
+                // }
+            }
+            
+            console.log("Total Score is "+sec_in_score + " / " + sec_in_wicket);
+            console.log("************************* " + i +" Over END *************************")
+            console.log("\n");
+        }
+        if(sec_in_score < target || sec_in_wicket === total_wickets){
+            sleepFor(2000);
+            console.log(team1+" Total Score is " + sec_in_score);
+            console.log("\n");
+            sleepFor(2000);
+            console.log(toss_win + " Total Score Is" + total_score)
+            console.log("\n");
+            sleepFor(3000);
+            console.log(toss_win + " Has Won the Match !!");
+            
+        }
+        else{
+            sleepFor(2000);
+            console.log(toss_win +" Total Score is " + total_score);
+            console.log("\n");
+            sleepFor(2000);
+            console.log(team1 + " Total Score Is" + sec_in_score);
+            console.log("\n");
+            sleepFor(3000);
+            console.log(team1 + " Won the match")
+        }
+    } 
+    // IF END
+             
+        else{
+            console.log("Team " + team2 + " is batting now");
+          for (let i = 1; i <=5; i++) {
+
+            console.log("************************* " + i +" Over Started *************************")
+            console.log("\n");
+
+            for (let j = 0; j <6; j++) {
+                sleepFor(1000);
+                let over_score = Math.floor(Math.random()*7);
+                if(over_score === 0){
+                    sec_in_wicket++;
+                    console.log(over_score + " Out");
+                }
+                else{
+                    sec_in_score += over_score;
+                    console.log(over_score);
+                }
+                if(sec_in_score === target ){
+                    console.log(team2 + " Has won the Match");
+                    break;
+                }
+                // else{
+                //     console.log(toss_win + " Has Won The Match");
+                //     break;
+                // }
+            }
+            
+            console.log("Total Score is "+sec_in_score + " / " + sec_in_wicket);
+            console.log("************************* " + i +" Over END *************************");
+        }
+        if(sec_in_score < target || sec_in_wicket === total_wickets){
+            sleepFor(2000);
+            console.log(team2+" Total Score is " + sec_in_score);
+            console.log("\n");
+            sleepFor(2000);
+            console.log(toss_win + " Total Score Is " + total_score)
+            console.log("\n");
+            sleepFor(3000);
+            console.log(toss_win + " Has Won the Match !!");
+            
+        }
+        else{
+            sleepFor(2000);
+            console.log(toss_win +" Total Score is " + total_score);
+            console.log("\n");
+            sleepFor(2000);
+            console.log(team2 + " Total Score Is " + sec_in_score);
+            console.log("\n");
+            sleepFor(3000);
+            console.log(team2 + " Won the match")
+        }
+     
+        }
+      }
+
+
+
+      function sleepFor(sleepDuration) {
+        let now = new Date().getTime();
+        while (new Date().getTime() < now + sleepDuration) {
+          /* do nothing */
+        }
+      }
+    </script>
+  </body>
+</html>

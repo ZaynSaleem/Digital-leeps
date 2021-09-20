@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="Enter text" onkeyup="getVal()">
+    <input type="number" disabled id="show_con">
+    <script>
+
+
+function getVal() {
+  let  val = document.querySelector('input').value;
+  let dollar = 168.59;
+  let conversion = document.getElementById('show_con').value = (val*dollar); 
+  console.log(conversion);
+}
+    </script>
+
+
+</body>
+</html>
